@@ -36,7 +36,7 @@ public class CubeVisual extends Visual
         setFrameSize(256);
 
         startMinim();
-        loadAudio("heroplanet.mp3");
+        loadAudio("Fred again.. & Lil Yachty & Overmono - stayinit.mp3");
         //getAp().play();
         //startListening(); 
         

@@ -23,7 +23,7 @@ public abstract class Visual extends PApplet
 
 	
 	
-	public void startMinim() 
+	public void startMinim()
 	{
 		minim = new Minim(this);
 
