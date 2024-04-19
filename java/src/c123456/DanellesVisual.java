@@ -3,7 +3,7 @@ package c123456;
 import ie.tudublin.*;
 import processing.core.PApplet;
 
-/*public class DanellesVisual extends Visual{
+public class DanellesVisual extends Visual{
     MainVisual main;
 
     public DanellesVisual(MainVisual main){
@@ -18,55 +18,5 @@ import processing.core.PApplet;
 
     }
     
-}*/
-
-class Branch {
-
-    //variable initialisation
-    MainVisual main;
-    float angle = 0;
-    float start;
-    float amplitude;
-
-    //branch array initialisation
-
-    Branch[] branches;
-
-    Branch(MainVisual main, float angle, float start, float amplitude, int branches){
-        
-        this.main = main;
-        this.angle = angle;
-        this.start = start;
-        this.amplitude = amplitude;
-
-        branch(branches);
-    
-    }
-
-    void display(){
-
-        main.rotate(this.angle);
-        main.line(0, 0, 0, amplitude);
-
-        if(branches != null){
-            main.translate(0, amplitude);
-            main.pushMatrix();
-            branches[0].show();
-            main.popMatrix();
-            branches[1].show();
-
-            
-        }
-    }
-
-    void branch(int branchAmt){
-        
-        if (branchAmt > 0){
-
-            branches = new Branch[2];
-            main.branchCounter++;
-            main.branchCounter++;
-        }
-    }
-     
 }
+
