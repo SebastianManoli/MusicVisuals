@@ -38,8 +38,15 @@ class Branch {
         this.angle = angle;
         this.start = start;
         this.amplitude = amplitude;
+
+        branch(branches);
     
     }
 
+    void display(){
+
+        main.rotate(this.angle);
+        main.line(0, 0, 0, amplitude);
+    }
      
 }
