@@ -6,14 +6,10 @@ public class MyVisual extends Visual {
     WaveForm wf;
     AudioBandsVisual abv;
 
+    int mode = 0;
+
     public void settings() {
-        size(1024, 500, P3D);
-
-        // Use this to make fullscreen
-        // fullScreen();
-
-        // Use this to make fullscreen and use P3D for 3D graphics
-        // fullScreen(P3D, SPAN);
+        size(800, 800, P3D);
     }
 
     public void setup() {
@@ -22,14 +18,14 @@ public class MyVisual extends Visual {
         // Call loadAudio to load an audio file to process
         loadAudio("Fred again.. & Lil Yachty & Overmono - stayinit.mp3");
 
-        // Call this instead to read audio from the microphone
-        // startListening();
-
         wf = new WaveForm(this);
         abv = new AudioBandsVisual(this);
     }
 
     public void keyPressed() {
+        if (key >= '0' && key <= '9') {
+			mode = key - '0';
+		}
         if (key == ' ') {
             getAudioPlayer().cue(0);
             getAudioPlayer().play();
@@ -44,12 +40,22 @@ public class MyVisual extends Visual {
         } catch (VisualException e) {
             e.printStackTrace();
         }
-        // Call this is you want to use frequency bands
-        calculateFrequencyBands();
 
-        // Call this is you want to get the average amplitude
-        calculateAverageAmplitude();
-        wf.render();
-        abv.render();
+        switch (mode) {
+            case 0:
+                background(0);
+                // Code goes here
+                //draw a circle
+                ellipse(width / 2, height / 2, 100, 100);
+
+                break;
+            case 1:
+                abv.render();
+                break;
+
+            default:
+                mode = 0;
+        }
+
     }
 }
