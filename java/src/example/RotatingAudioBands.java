@@ -57,7 +57,7 @@ public class RotatingAudioBands extends Visual {
         }
         calculateFrequencyBands();
         background(0);
-        noFill(); //hi seb
+        noFill(); 
         stroke(255);
         lights();
         stroke(map(getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
