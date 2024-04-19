@@ -47,6 +47,20 @@ class Branch {
 
         main.rotate(this.angle);
         main.line(0, 0, 0, amplitude);
+
+        if(branches != null){
+            main.translate(0, amplitude);
+        }
+    }
+
+    void branch(int branchAmt){
+        
+        if (branchAmt > 0){
+
+            branches = new Branch[2];
+            main.branchCounter++;
+            main.branchCounter++;
+        }
     }
      
 }
