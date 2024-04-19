@@ -7,6 +7,10 @@ public class MainVisual extends Visual {
 
     int mode = 0;
 
+    DanellesVisual danelle;
+    SebsVisual seb;
+
+    
     public void settings() {
         size(800, 800, P3D);
     }
@@ -16,6 +20,11 @@ public class MainVisual extends Visual {
 
         // Call loadAudio to load an audio file to process
         loadAudio("Fred again.. & Lil Yachty & Overmono - stayinit.mp3");
+
+        colorMode(HSB);
+
+        danelle = new DanellesVisual(this);
+        seb = new SebsVisual(this);
 
     }
 
@@ -30,7 +39,7 @@ public class MainVisual extends Visual {
     }
 
     public void draw() {
-
+        
         background(0);
 
         try 
@@ -43,21 +52,19 @@ public class MainVisual extends Visual {
             e.printStackTrace();
         }
 
-        // switch (mode) {
-        //     case 0:
-        //         background(0);
-        //         // Code goes here
-        //         //draw a circle
-        //         ellipse(width / 2, height / 2, 100, 100);
+        switch (mode) 
+        {
+            case 0:
+                danelle.render();
+                break;
 
-        //         break;
-        //     case 1:
+            case 1:
+                seb.render();
+                break;
 
-        //         break;
-
-        //     default:
-        //         mode = 0;
-        // }
+            default:
+                mode = 0;
+        }
 
     }
 
