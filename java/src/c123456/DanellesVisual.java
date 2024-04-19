@@ -50,6 +50,12 @@ class Branch {
 
         if(branches != null){
             main.translate(0, amplitude);
+            main.pushMatrix();
+            branches[0].show();
+            main.popMatrix();
+            branches[1].show();
+
+            
         }
     }
 
