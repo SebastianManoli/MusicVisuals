@@ -30,7 +30,7 @@ public class MainVisual extends Visual {
     }
 
     public void draw() {
-        
+
         background(0);
 
         try 
