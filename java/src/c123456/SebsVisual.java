@@ -11,10 +11,8 @@ public class SebsVisual extends Visual
     float angle = 0;
     float angleX = 200;
     float angleY = 0;
-    float speedX = 0.01f;
-    float speedY = 0.01f;
-    int numBands = 8; // Number of frequency bands
-    float bandWidth; // Width of each band
+    float speedX = 0.05f;
+    float speedY = 0.05f;
 
     public SebsVisual(MainVisual main) {
         this.main = main;
@@ -22,37 +20,56 @@ public class SebsVisual extends Visual
 
     public void render()
     {
-        main.colorMode(MainVisual.HSB);
-        main.sphereDetail(150);
-        main.background(0);
-        main.noStroke();
-
         main.calculateAverageAmplitude();
+        main.colorMode(MainVisual.HSB);
+
+        
+
+        int sphereDetail = (int) ((100 * main.getSmoothedAmplitude()));
+        main.sphereDetail(sphereDetail);
+        main.background(0);
+        main.stroke(MainVisual.map(main.getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
+        main.strokeWeight(1);
+
+        // main.noStroke();
 
 
-        main.directionalLight(225, 102, 126, 0, -1, 0);
-        main.directionalLight(100, 102, 126, 0, 1, 0);
+
+        main.directionalLight(main.getSmoothedAmplitude() * 1000, 700, 206, 0, -1, 0);
+        main.directionalLight(-main.getSmoothedAmplitude() * 1500, 500, 126, 0, 1, 0);
 
         // Generate random angles for spotlight positions
         float randomAngleX = main.random(MainVisual.TWO_PI);
         float randomAngleY = main.random(MainVisual.TWO_PI);
 
-        // Calculate spotlight positions
-        float spotlightX = main.width / 2 + 90 * PApplet.sin(randomAngleX);
-        float spotlightY = main.height / 2 + 90 * PApplet.sin(randomAngleY);
-
         // Update angles for animation
         randomAngleX += speedX;
         randomAngleY += speedY;
 
+        // Calculate spotlight positions
+        float spotlightX = main.width / 2 + 90 * PApplet.sin(randomAngleX);
+        float spotlightY = main.height / 2 + 90 * PApplet.sin(randomAngleY);
+
+    
+
         main.spotLight(130, 300, 204, spotlightX, spotlightY, 600, 0, 0, -1, MainVisual.PI/2, 600);
         main.spotLight(20, 300, 204, spotlightY, spotlightY, 600, 0, 0, -1, MainVisual.PI/2, 600);
+        main.spotLight(220, 500, 204, spotlightY, spotlightY, 600, 0, 0, -1, MainVisual.PI/2, 600);
 
+        main.pushMatrix();
+        // //
+        main.camera(0, 0, 0, 0, 0, -1, 0, 1, 0);
 
-        main.translate(main.width/2, main.height/2, 0);
+        // main.translate(main.width/2, main.height/2, 0);
+        main.translate(0, 0, -200);
+        main.rotateX(angle);
+        main.rotateZ(angle);   
 
-        float sphereSize = 100 + (300 * main.getSmoothedAmplitude()); 
+        float sphereSize = 50 + (200 * main.getSmoothedAmplitude()); 
         main.sphere(sphereSize);
+
+        main.popMatrix();
+        angle += 0.01f;
 
         // main.calculateAverageAmplitude();
         // main.stroke(MainVisual.map(main.getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
