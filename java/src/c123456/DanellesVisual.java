@@ -32,6 +32,15 @@ class Ball
     int id;
     Ball[] others;
 
+    //constructor
+    Ball(float xin, float yin, float din, int idin, Ball[] oin){
+        x = xin;
+        y = yin;
+        diameter = din;
+        id = idin;
+        others = oin;
+    }
+
 
 
 
