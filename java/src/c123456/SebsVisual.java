@@ -40,9 +40,9 @@ public class SebsVisual extends Visual
         // main.noStroke();
 
 
-
-        main.directionalLight(main.getSmoothedAmplitude() * 1000, 700, 206, 0, -1, 0);
+        main.directionalLight(main.getSmoothedAmplitude() * 10, 700, 206, 0, -1, 0);
         main.directionalLight(main.getSmoothedAmplitude() * 1500, 500, 126, 0, 1, 0);
+
 
         // Generate random angles for spotlight positions
         float randomAngleX = main.random(MainVisual.TWO_PI);
@@ -57,12 +57,9 @@ public class SebsVisual extends Visual
         float spotlightY = main.height / 2 + 90 * PApplet.sin(randomAngleY);
 
     
-
-        main.spotLight(130, 300, 204, spotlightX, spotlightY, 600, 0, 0, -1, MainVisual.PI/2, 600);
-        main.spotLight(20, 300, 204, spotlightY, spotlightY, 600, 0, 0, -1, MainVisual.PI/2, 600);
-        main.spotLight(220, 500, 204, spotlightY, spotlightY, 600, 0, 0, -1, MainVisual.PI/2, 600);
-
-        // main.lights();
+        //spotlights in the sphere
+        main.spotLight(130, 700, 500, spotlightX, spotlightY, 600, 0, 0, -1, MainVisual.PI/2, 600);
+        main.spotLight(220, 700, 500, spotlightY, spotlightY, 600, 0, 0, -1, MainVisual.PI/2, 600);
 
 
         main.pushMatrix();
@@ -95,6 +92,17 @@ public class SebsVisual extends Visual
         // main.box(boxSize);   
         // main.popMatrix();
         // angle += 0.01f;
+
+        int gridSize = 50;
+        for (int x = gridSize; x <= main.width - gridSize; x += gridSize) {
+            for (int y = gridSize; y <= main.height - gridSize; y += gridSize) {
+                main.noStroke();
+                main.fill(255);
+                main.rect(x-1, y-1, 3, 3);
+                main.stroke(255, 100);
+                main.line(x, y, width/2, height/2);
+            }
+        }
     }
 
 }
