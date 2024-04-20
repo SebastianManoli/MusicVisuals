@@ -13,6 +13,9 @@ public class SebsVisual extends Visual
     float angleY = 0;
     float speedX = 0.05f;
     float speedY = 0.05f;
+    int targetSphereDetail = 0;
+    int currentSphereDetail = 0;
+    float lerpAmount = 0.1f;
 
     public SebsVisual(MainVisual main) {
         this.main = main;
@@ -23,12 +26,15 @@ public class SebsVisual extends Visual
         main.calculateAverageAmplitude();
         main.colorMode(MainVisual.HSB);
 
-        
+        targetSphereDetail = (int) ((200 * main.getSmoothedAmplitude()));
+
+        // Smoothly interpolate between current and target sphereDetail
+        currentSphereDetail = (int) PApplet.lerp(currentSphereDetail, targetSphereDetail, lerpAmount);
 
         int sphereDetail = (int) ((100 * main.getSmoothedAmplitude()));
-        main.sphereDetail(sphereDetail);
+        main.sphereDetail(currentSphereDetail);
         main.background(0);
-        main.stroke(MainVisual.map(main.getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
+        main.stroke(MainVisual.map(10*main.getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
         main.strokeWeight(1);
 
         // main.noStroke();
@@ -36,7 +42,7 @@ public class SebsVisual extends Visual
 
 
         main.directionalLight(main.getSmoothedAmplitude() * 1000, 700, 206, 0, -1, 0);
-        main.directionalLight(-main.getSmoothedAmplitude() * 1500, 500, 126, 0, 1, 0);
+        main.directionalLight(main.getSmoothedAmplitude() * 1500, 500, 126, 0, 1, 0);
 
         // Generate random angles for spotlight positions
         float randomAngleX = main.random(MainVisual.TWO_PI);
@@ -56,6 +62,9 @@ public class SebsVisual extends Visual
         main.spotLight(20, 300, 204, spotlightY, spotlightY, 600, 0, 0, -1, MainVisual.PI/2, 600);
         main.spotLight(220, 500, 204, spotlightY, spotlightY, 600, 0, 0, -1, MainVisual.PI/2, 600);
 
+        // main.lights();
+
+
         main.pushMatrix();
         // //
         main.camera(0, 0, 0, 0, 0, -1, 0, 1, 0);
@@ -65,7 +74,7 @@ public class SebsVisual extends Visual
         main.rotateX(angle);
         main.rotateZ(angle);   
 
-        float sphereSize = 50 + (200 * main.getSmoothedAmplitude()); 
+        float sphereSize = 20 + (150 * main.getSmoothedAmplitude()); 
         main.sphere(sphereSize);
 
         main.popMatrix();
