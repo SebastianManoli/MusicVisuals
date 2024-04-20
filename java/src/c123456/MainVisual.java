@@ -10,6 +10,9 @@ public class MainVisual extends Visual {
     DanellesVisual danelle;
     SebsVisual seb;
 
+    public int branchCounter = 0;
+    public float fCounter = 0;
+
     
     public void settings() {
         size(700, 700, P3D);

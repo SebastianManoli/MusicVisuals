@@ -3,20 +3,42 @@ package c123456;
 import ie.tudublin.*;
 import processing.core.PApplet;
 
-public class DanellesVisual extends Visual{
+public class DanellesVisual extends Visual
+{
     MainVisual main;
 
-    public DanellesVisual(MainVisual main){
-        this.main = main;
-    }
+    //declare global variables
+    int numBalls = 12;
+    float gravity = 0.03f;
+    float spring = 0.05f;
+    float friction = -0.9f;
 
-    public void render(){
-        main.colorMode(MainVisual.HSB);
-        main.textSize(20);
-        main.fill(255);
-        main.textAlign(CENTER,CENTER);
 
-    }
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
