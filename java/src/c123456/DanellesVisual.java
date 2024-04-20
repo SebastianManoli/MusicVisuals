@@ -19,9 +19,18 @@ public class DanellesVisual extends Visual
 
 
 
+}
 
-
-
+//class that holds methods and atttributes for the balls' movement, collision and shape and colour
+class Ball 
+{
+    float x;
+    float y;
+    float diameter;
+    float vx = 0;
+    float vy = 0;
+    int id;
+    Ball[] others;
 
 
 
@@ -41,4 +50,33 @@ public class DanellesVisual extends Visual
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
