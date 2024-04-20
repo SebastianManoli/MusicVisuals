@@ -93,12 +93,23 @@ public class SebsVisual extends Visual
         // main.popMatrix();
         // angle += 0.01f;
 
-        int gridSize = 50;
+        int gridSize = 10;
         for (int x = gridSize; x <= main.width - gridSize; x += gridSize) {
             for (int y = gridSize; y <= main.height - gridSize; y += gridSize) {
                 main.noStroke();
                 main.fill(255);
                 main.rect(x-1, y-1, 3, 3);
+                main.stroke(255, 600* main.getSmoothedAmplitude()*0);
+                main.line(x, y, main.width/2, main.height/2);
+            }
+        }
+
+        gridSize = 50;
+        for (int x = gridSize; x <= main.width - gridSize; x += gridSize) {
+            for (int y = gridSize; y <= main.height - gridSize; y += gridSize) {
+                main.noStroke();
+                // main.fill(255);
+                main.rect(x-1, y-1, 1, 1);
                 main.stroke(255, 600* main.getSmoothedAmplitude());
                 main.line(x, y, main.width/2, main.height/2);
             }
