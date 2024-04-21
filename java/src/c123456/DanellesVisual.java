@@ -9,15 +9,17 @@ public class DanellesVisual extends Visual
 
     //declare global variables
     int numBalls = 12;
-    float gravity = 0.03f;
     float spring = 0.05f;
+    float gravity = 0.03f;
     float friction = -0.9f;
+    Ball[] balls = new Ball[numBalls];
 
     public DanellesVisual(MainVisual main){
         this.main = main;
     }
 
-    public void render(){
+    public void render() {
+
         for (int i = 0; i < numBalls; i++)
         {
             balls[i] = new Ball(main.random(main.width), main.random(main.height), main.random(30, 70), i, balls);
@@ -30,8 +32,8 @@ public class DanellesVisual extends Visual
         main.background(0);
         for (Ball ball : balls) {
             ball.collide();
-            //ball.move();
-            //ball.display(;)
+            ball.move();
+            ball.display();
         }
     }
 
@@ -48,7 +50,7 @@ class Ball
     Ball[] others;
 
     //constructor
-    Ball(float xin, float yin, float din, int idin, Ball[] oin){
+    Ball(float xin, float yin, float din, int idin, Ball[] oin) {
         x = xin;
         y = yin;
         diameter = din;
@@ -56,6 +58,7 @@ class Ball
         others = oin;
     }
 
+    //method so that the balls move and bounce off sides
     void collide()
     {
         for (int i = id + 1; i < numBalls; i++)
@@ -79,24 +82,32 @@ class Ball
         }
     }
 
+    void move(){
+        vy += gravity;
+        x += vx;
+        y += vy;
 
+        if (x + diameter/2 > main.width) {
+            x = main.width - diameter/2;
+            vx *= friction;
+        }
+        else if (x - diameter/2 < 0) {
+            x = diameter/2;
+            vx *= friction;
+        }
+        if (y + diameter/2 > main.height) {
+            y = main.height - diameter/2;
+            vy *= friction;
+        }
+        else if (y - diameter/2 < 0) {
+            y = diameter/2;
+            vy *=friction;
+        }
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    void display() {
+        main.ellipse(x, y, diameter, diameter);
+    }
 
 }
 
