@@ -26,8 +26,9 @@ public class DanellesVisual extends Visual
         
         // }
 
-        // main.noStroke();
-        // main.fill(255, 204);
+        main.stroke(MainVisual.map(10*main.getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
+        main.strokeWeight(2);
+        main.fill(MainVisual.map(10*main.getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
 
         main.calculateAverageAmplitude();
         main.colorMode(MainVisual.HSB);
@@ -52,7 +53,7 @@ public class Ball
     float vy = 0;
     int id;
     Ball[] others;
-    //int color;
+    int[] colors;
 
     //constructor
     Ball(float xin, float yin, float din, int idin, Ball[] oin) {
@@ -61,14 +62,8 @@ public class Ball
         diameter = din;
         id = idin;
         others = oin;
-        //color = main.color(main.random(255), main.random(255), main.random(255));
     }
 
-    /* 
-    void changeColor() {
-        color = main.color(main.random(180), main.random(180), main.random(80));
-    } 
-    */
 
     //method so that the balls move and bounce off sides
     void collide()
