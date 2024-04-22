@@ -34,11 +34,12 @@ public class DanellesVisual extends Visual
             ball.collide();
             ball.move();
             ball.display();
+            //ball.changeColor();
         }
     }
 
 
-//class that holds methods and atttributes for the balls' movement, collision and shape and colour
+//class that holds methods and attributes for the balls' movement, collision and shape and colour
 class Ball 
 {
     float x;
@@ -48,6 +49,7 @@ class Ball
     float vy = 0;
     int id;
     Ball[] others;
+    //int color;
 
     //constructor
     Ball(float xin, float yin, float din, int idin, Ball[] oin) {
@@ -56,7 +58,14 @@ class Ball
         diameter = din;
         id = idin;
         others = oin;
+        //color = main.color(main.random(255), main.random(255), main.random(255));
     }
+
+    /* 
+    void changeColor() {
+        color = main.color(main.random(180), main.random(180), main.random(80));
+    } 
+    */
 
     //method so that the balls move and bounce off sides
     void collide()
@@ -95,8 +104,8 @@ class Ball
             x = diameter/2;
             vx *= friction;
         }
-        if (y + diameter/2 > main.height) {
-            y = main.height - diameter/2;
+        if (y + diameter/2 > main.height/2) {
+            y = main.height/2 - diameter/2;
             vy *= friction;
         }
         else if (y - diameter/2 < 0) {
