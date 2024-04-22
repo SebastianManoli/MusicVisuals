@@ -20,14 +20,14 @@ public class DanellesVisual extends Visual
 
     public void render() {
 
-        for (int i = 0; i < numBalls; i++)
-        {
-            balls[i] = new Ball(main.random(main.width), main.random(main.height), main.random(30, 70), i, balls);
+        // for (int i = 0; i < numBalls; i++)
+        // {
+        //     balls[i] = new Ball(main.random(main.width), 0, 70, i, balls);
         
-        }
+        // }
 
-        main.noStroke();
-        main.fill(255, 204);
+        // main.noStroke();
+        // main.fill(255, 204);
 
         main.background(0);
         for (Ball ball : balls) {
@@ -40,7 +40,7 @@ public class DanellesVisual extends Visual
 
 
 //class that holds methods and attributes for the balls' movement, collision and shape and colour
-class Ball 
+public class Ball 
 {
     float x;
     float y;
@@ -74,19 +74,21 @@ class Ball
         {
             float dx = others[i].x - x;
             float dy = others[i].y - y;
-            float distance = main.sqrt(dx*dx + dy*dy);
+            float distance = MainVisual.sqrt(dx*dx + dy*dy);
             float minDist = others[i].diameter/2 + diameter/2;
 
             //if the balls collide
             if (distance < minDist)
             {
-                float angle = main.atan2(dy, dx);
-                float targetX = x + main.cos(angle) * minDist;
-                float targetY = y + main.sin(angle) * minDist;
+                float angle = MainVisual.atan2(dy, dx);
+                float targetX = x + MainVisual.cos(angle) * minDist;
+                float targetY = y + MainVisual.sin(angle) * minDist;
                 float ax = (targetX - others[i].x) * spring;
                 float ay = (targetY - others[i].y) * spring;
                 vx -= ax;
                 vy -= ay;
+                others[i].vx += ax;
+                others[i].vy += ay;
             }
         }
     }
@@ -104,13 +106,13 @@ class Ball
             x = diameter/2;
             vx *= friction;
         }
-        if (y + diameter/2 > main.height/2) {
-            y = main.height/2 - diameter/2;
+        if (y + diameter/2 > main.height) {
+            y = main.height - diameter/2;
             vy *= friction;
         }
         else if (y - diameter/2 < 0) {
             y = diameter/2;
-            vy *=friction;
+            vy *= friction;
         }
     }
 

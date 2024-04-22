@@ -26,8 +26,17 @@ public class MainVisual extends Visual {
 
         colorMode(HSB);
 
-        danelle = new DanellesVisual(this);
+        
         seb = new SebsVisual(this);
+        danelle = new DanellesVisual(this);
+        for (int i = 0; i < danelle.numBalls; i++)
+        {
+            danelle.balls[i] = danelle.new Ball(random(width), random(height), random(30, 70), i, danelle.balls);
+        
+        }
+
+        noStroke();
+        fill(255, 204);
 
     }
 
