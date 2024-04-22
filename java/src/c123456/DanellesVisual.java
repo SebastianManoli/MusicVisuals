@@ -10,7 +10,7 @@ public class DanellesVisual extends Visual
     //declare global variables
     int numBalls = 12;
     float spring = 0.05f;
-    float gravity = 0.03f;
+    float gravity = 0.05f;
     float friction = -0.9f;
     Ball[] balls = new Ball[numBalls];
 
@@ -28,6 +28,9 @@ public class DanellesVisual extends Visual
 
         // main.noStroke();
         // main.fill(255, 204);
+
+        main.calculateAverageAmplitude();
+        main.colorMode(MainVisual.HSB);
 
         main.background(0);
         for (Ball ball : balls) {
@@ -75,7 +78,7 @@ public class Ball
             float dx = others[i].x - x;
             float dy = others[i].y - y;
             float distance = MainVisual.sqrt(dx*dx + dy*dy);
-            float minDist = others[i].diameter/2 + diameter/2;
+            float minDist = others[i].diameter/2 + main.getSmoothedAmplitude()*350 + diameter/2 + main.getSmoothedAmplitude()*350;
 
             //if the balls collide
             if (distance < minDist)
@@ -117,7 +120,7 @@ public class Ball
     }
 
     void display() {
-        main.ellipse(x, y, diameter, diameter);
+        main.ellipse(x, y, diameter+ main.getSmoothedAmplitude()*350, diameter+ main.getSmoothedAmplitude()*350);
     }
 
 }
