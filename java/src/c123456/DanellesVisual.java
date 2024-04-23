@@ -10,7 +10,7 @@ public class DanellesVisual extends Visual
     //declare global variables
     int numBalls = 12;
     float spring = 0.05f;
-    float gravity = 0.03f;
+    float gravity = 0.05f;
     float friction = -0.9f;
     Ball[] balls = new Ball[numBalls];
 
@@ -20,26 +20,31 @@ public class DanellesVisual extends Visual
 
     public void render() {
 
-        for (int i = 0; i < numBalls; i++)
-        {
-            balls[i] = new Ball(main.random(main.width), main.random(main.height), main.random(30, 70), i, balls);
+        // for (int i = 0; i < numBalls; i++)
+        // {
+        //     balls[i] = new Ball(main.random(main.width), 0, 70, i, balls);
         
-        }
+        // }
 
-        main.noStroke();
-        main.fill(255, 204);
+        main.stroke(MainVisual.map(10*main.getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
+        main.strokeWeight(2);
+        main.fill(MainVisual.map(10*main.getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
+
+        main.calculateAverageAmplitude();
+        main.colorMode(MainVisual.HSB);
 
         main.background(0);
         for (Ball ball : balls) {
             ball.collide();
             ball.move();
             ball.display();
+            //ball.changeColor();
         }
     }
 
 
-//class that holds methods and atttributes for the balls' movement, collision and shape and colour
-class Ball 
+//class that holds methods and attributes for the balls' movement, collision and shape and colour
+public class Ball 
 {
     float x;
     float y;
@@ -48,6 +53,7 @@ class Ball
     float vy = 0;
     int id;
     Ball[] others;
+    int[] colors;
 
     //constructor
     Ball(float xin, float yin, float din, int idin, Ball[] oin) {
@@ -58,6 +64,7 @@ class Ball
         others = oin;
     }
 
+
     //method so that the balls move and bounce off sides
     void collide()
     {
@@ -65,19 +72,21 @@ class Ball
         {
             float dx = others[i].x - x;
             float dy = others[i].y - y;
-            float distance = main.sqrt(dx*dx + dy*dy);
-            float minDist = others[i].diameter/2 + diameter/2;
+            float distance = MainVisual.sqrt(dx*dx + dy*dy);
+            float minDist = others[i].diameter/2 + main.getSmoothedAmplitude()*350 + diameter/2 + main.getSmoothedAmplitude()*350;
 
             //if the balls collide
             if (distance < minDist)
             {
-                float angle = main.atan2(dy, dx);
-                float targetX = x + main.cos(angle) * minDist;
-                float targetY = y + main.sin(angle) * minDist;
+                float angle = MainVisual.atan2(dy, dx);
+                float targetX = x + MainVisual.cos(angle) * minDist;
+                float targetY = y + MainVisual.sin(angle) * minDist;
                 float ax = (targetX - others[i].x) * spring;
                 float ay = (targetY - others[i].y) * spring;
                 vx -= ax;
                 vy -= ay;
+                others[i].vx += ax;
+                others[i].vy += ay;
             }
         }
     }
@@ -101,12 +110,12 @@ class Ball
         }
         else if (y - diameter/2 < 0) {
             y = diameter/2;
-            vy *=friction;
+            vy *= friction;
         }
     }
 
     void display() {
-        main.ellipse(x, y, diameter, diameter);
+        main.ellipse(x, y, diameter+ main.getSmoothedAmplitude()*350, diameter+ main.getSmoothedAmplitude()*350);
     }
 
 }
