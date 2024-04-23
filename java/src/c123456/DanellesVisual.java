@@ -8,7 +8,7 @@ public class DanellesVisual extends Visual
     MainVisual main;
 
     //declare global variables
-    int numBalls = 12;
+    int numBalls = 20;
     float spring = 0.05f;
     float gravity = 0.05f;
     float friction = -0.9f;
