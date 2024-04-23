@@ -13,6 +13,9 @@ public class DanellesVisual extends Visual
     float gravity = 0.05f;
     float friction = -0.9f;
     Ball[] balls = new Ball[numBalls];
+    float smoothedAmplitude;
+    float[] lerpedBuffer;
+
 
     public DanellesVisual(MainVisual main){
         this.main = main;
@@ -20,12 +23,22 @@ public class DanellesVisual extends Visual
 
     public void render() {
 
-        // for (int i = 0; i < numBalls; i++)
-        // {
-        //     balls[i] = new Ball(main.random(main.width), 0, 70, i, balls);
-        
-        // }
+        float average = 0;
+        float sum = 0;
+        float halfHeight = main.height / 2;
+        lerpedBuffer = new float[main.width];
+        smoothedAmplitude = MainVisual.lerp(smoothedAmplitude, average, 0.1f);
 
+        for (int i = 0; i < main.getAudioBuffer().size(); i++) 
+        {
+            sum += MainVisual.abs(main.getAudioBuffer().get(i));
+            lerpedBuffer[i] = MainVisual.lerp(lerpedBuffer[i], main.getAudioBuffer().get(i), 0.05f);
+        }
+        average = sum / (float) main.getAudioBuffer().size();
+
+        sum = 0;
+
+        
         main.stroke(MainVisual.map(10*main.getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
         main.strokeWeight(2);
         main.fill(MainVisual.map(10*main.getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
@@ -40,6 +53,28 @@ public class DanellesVisual extends Visual
             ball.display();
             //ball.changeColor();
         }
+
+        for(int i =0; i < main.getAudioBuffer().size(); i++)
+        {
+            // These are to map through the colour specturm and change colours while visualising
+            float c = Visual.map(i, 0, main.getAudioBuffer().size(), 0, 255);
+            float c2 = Visual.map(i, 0, main.getAudioBuffer().size(), 255, 0);
+            
+            // These will add the border to all 4 sides and will be changed with the frequency of the song
+            main.stroke(c, 255, 255);
+            float side1 = lerpedBuffer[i] * halfHeight * 2.5f;
+            main.rect(i*2, halfHeight*1.95f + side1, i, halfHeight - side1);    
+            
+            float side2 = lerpedBuffer[i] * halfHeight * 2.5f;
+            main.rect(i*2,0 + side2, i, 0 - side2); 
+
+            float side3 = lerpedBuffer[i] * halfHeight * 2.0f;
+            main.rect(0+side3,i, 0-side3, i); 
+
+            float side4 = lerpedBuffer[i] * halfHeight * 2.0f;
+            main.rect(main.width-side4,i, main.height + side4, i);
+        }
+
     }
 
 
@@ -120,7 +155,12 @@ public class Ball
 
 }
 
+
 }
+
+
+
+
 
 
 
