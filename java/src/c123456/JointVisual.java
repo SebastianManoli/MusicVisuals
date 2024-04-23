@@ -34,13 +34,13 @@ public class JointVisual extends Visual
             
             for(int j = 0; j < main.height; j++)
             {
-                float c = MainVisual.map(j, 0, main.getAudioBuffer().size(), 0, 255);
+                float c = MainVisual.map(main.getSmoothedAmplitude()*700, 0, main.getAudioBuffer().size(), 0, 255);
          
                 float r = MainVisual.sqrt((x*x) + (y*y));
                 float theta = MainVisual.atan2(y,x);
 
                 float val = MainVisual.sin(n*MainVisual.cos(r) + 2 * theta);
-                main.pixels[i+j*main.width] = main.color((val + 1.0f) * 255.0f/2.0f, saturation, 255);
+                main.pixels[i+j*main.width] = main.color(c,(val + 1.0f) * 255.0f/2.0f, 255);
                 y += dy;
             }
             
