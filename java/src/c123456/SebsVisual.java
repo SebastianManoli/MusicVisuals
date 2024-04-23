@@ -110,7 +110,7 @@ public class SebsVisual extends Visual
                 main.stroke(3);
                 // main.fill(255);
                 main.rect(x-1, y-1, 1, 1);
-                main.stroke(255, 600* main.getSmoothedAmplitude());
+                main.stroke(255, 700* main.getSmoothedAmplitude());
                 main.line(x, y, main.width/2, main.height/2);
                 // main.line(x, y, main.width, 0);
                 // main.line(x, y, 0, main.height/2);
