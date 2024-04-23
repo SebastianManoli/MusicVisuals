@@ -9,6 +9,7 @@ public class MainVisual extends Visual {
 
     DanellesVisual danelle;
     SebsVisual seb;
+    JointVisual joint;
 
     public int branchCounter = 0;
     public float fCounter = 0;
@@ -26,9 +27,12 @@ public class MainVisual extends Visual {
 
         colorMode(HSB);
 
-        
+        joint = new JointVisual(this);
         seb = new SebsVisual(this);
         danelle = new DanellesVisual(this);
+
+
+
         for (int i = 0; i < danelle.numBalls; i++)
         {
             danelle.balls[i] = danelle.new Ball(random(width), random(height), random(30, 70), i, danelle.balls);
@@ -72,6 +76,10 @@ public class MainVisual extends Visual {
 
             case 1:
                 seb.render();
+                break;
+            
+            case 2:
+                joint.render();
                 break;
 
             default:
