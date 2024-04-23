@@ -15,8 +15,12 @@ public class JointVisual extends Visual
 
     public void render()
     {
+
+        main.calculateAverageAmplitude();
+        main.colorMode(MainVisual.HSB);
+
         main.loadPixels();
-        float n = (main.mouseX * 10.0f) / main.width;
+        float n = main.getSmoothedAmplitude() * 50.0f;
         float w = 16.0f;
         float h = 16.0f;
         float dx = w / main.width;
@@ -29,6 +33,7 @@ public class JointVisual extends Visual
 
             for(int j = 0; j < main.height; j++)
             {
+                float c = Visual.map(i, 0, main.getAudioBuffer().size(), 0, 255);
                 float r = MainVisual.sqrt((x*x) + (y*y));
                 float theta = MainVisual.atan2(y,x);
 
