@@ -53,6 +53,8 @@ I am most proud of how my partner and I worked together. We assigned parts based
 
 ![image](https://github.com/SebastianManoli/MusicVisuals/assets/124163339/8b0d5878-8f75-4a49-b42c-bb6b7b27c6ae)
 
+![image](https://github.com/SebastianManoli/MusicVisuals/assets/124163339/4ac4baf9-864e-426d-a543-a54f526a04cb)
+
 
 # Video
 
