@@ -1,8 +1,8 @@
 # Music Visualiser Project
 
-Name: Sebastian Manoli, Danelle Pillay
+Names: Sebastian Manoli, Danelle Pillay
 
-Student Number: C22375341, C22348731
+Student Numbers: C22375341, C22348731
 
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
@@ -39,7 +39,7 @@ I mainly used ```getSmoothedAmplitude()``` and ``` main.getAudioBuffer().size() 
 My visual responds to audio input by changing the size, colour and position of the balls based on the amplitude of the music. The rectangles create a border that represent the audio waves/spectrum, with their size and colour changing dynamically based on the amplitude of the music. In my class, I have a lerped buffer that stores the amplitude of the audio and this makes the rectangles on the border to change size and colour depending on the amplitude of the music. Overall, I mainly used the ```lerp()```, ```getAudioBuffer()``` and ```getSmoothedAmplitude()``` functions to help me achieve this. 
 
 ## Joint
-The dynamic twisting spiral effect is achieved by continuously updating the pixel colours based on the audio amplitude, and the calculated value from the sine and cosine functions. As the audio chnages, the amplitude affects the colour and saturation of the pixels, while the sine and cosine functions create a swirling motion.
+The dynamic twisting spiral effect is achieved by continuously updating the pixel colours based on the audio amplitude, and the calculated value from the sine and cosine functions. As the audio changes, the amplitude affects the colour and saturation of the pixels, while the sine and cosine functions create a swirling motion.
 
 # What I am most proud of in the assignment
 ## Sebastian
