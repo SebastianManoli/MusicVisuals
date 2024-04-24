@@ -16,6 +16,14 @@ Student Number: C22375341, C22348731
 For my visual I created geometric sphere where the edges increase and the detial of the sphere improves as the music plays. I also added directional lights to the sphere which gave it more life. I also created spotlights that move sporadically inside and around the sphere which I thought was really cool and added to the movement of the visual. For the background I made a grid and an iteration of lines pointing to every square in the grid covering the background of the screen. Finally I synced all the hues, colors and brightness' of all the different stroke edges in my visual to react differently with the amplitude of the music.
 
 # Instructions
+Upon runnning the program, the mainwindow will appear with one of the visuals showing on the screen.
+| Press Key | Visual |
+|-----------|-----------|
+| Spacebar | Play music |
+| '0' | Danelles's Visual |
+| '1' | Seb's Visual |
+| '2' | Our Joint Visual |
+
 
 # How it works
 
