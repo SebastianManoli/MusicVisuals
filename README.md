@@ -45,8 +45,14 @@ The dynamic twisting spiral effect is achieved by continuously updating the pixe
 ## Sebastian
 I am most proud of overcoming the trial and error stages when I only had a circle in the middle of my screen. And I am really glad I could express myself creatively through code which I never really thought I could do up until now. And I am more than happy with my final visual and how far I have come since i started this project. 
 
+![image](https://github.com/SebastianManoli/MusicVisuals/assets/124163339/5193b918-ca35-406c-976a-0094b05e05ea)
+
+
 ## Danelle
 I am most proud of how my partner and I worked together. We assigned parts based on our strengths to create some pretty awesome visuals. I am most proud of how I got the balls to bounce as that took a lot of trial and error, but I am glad it was achieved. I am also proud of the spiral effect we created and this visual helped me develop my knowledge of the trigonometric methods in processing. Developing this project has also made me more confident with using git and its commands.
+
+![image](https://github.com/SebastianManoli/MusicVisuals/assets/124163339/8b0d5878-8f75-4a49-b42c-bb6b7b27c6ae)
+
 
 # Video
 
