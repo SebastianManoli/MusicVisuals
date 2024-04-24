@@ -107,14 +107,13 @@ public class SebsVisual extends Visual
         gridSize = 50;
         for (int x = gridSize; x <= main.width - gridSize; x += gridSize) {
             for (int y = gridSize; y <= main.height - gridSize; y += gridSize) {
-                main.stroke(3);
+                float c = Visual.map(main.getSmoothedAmplitude()*10*y, 0, main.getAudioBuffer().size(), 0, 255);
+                // main.stroke(3);
                 // main.fill(255);
+                main.stroke(c, 255, 4000*main.getSmoothedAmplitude());
                 main.rect(x-1, y-1, 1, 1);
-                main.stroke(255, 700* main.getSmoothedAmplitude());
                 main.line(x, y, main.width/2, main.height/2);
-                // main.line(x, y, main.width, 0);
-                // main.line(x, y, 0, main.height/2);
-                // main.line(x, y, main.width, main.height/2);
+    
             }
         }
     }
