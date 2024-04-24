@@ -8,6 +8,7 @@ public class SebsVisual extends Visual
 
     MainVisual main;
 
+    //decalreing variables
     float angle = 0;
     float angleX = 200;
     float angleY = 0;
@@ -30,17 +31,15 @@ public class SebsVisual extends Visual
 
         // Smoothly interpolate between current and target sphereDetail
         currentSphereDetail = (int) PApplet.lerp(currentSphereDetail, targetSphereDetail, lerpAmount);
-
-        int sphereDetail = (int) ((100 * main.getSmoothedAmplitude()));
-        main.sphereDetail(currentSphereDetail);
+        main.sphereDetail(currentSphereDetail); // Set sphere detail to the lerped amplitude value
         main.background(0);
-        main.stroke(MainVisual.map(10*main.getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
+        main.stroke(MainVisual.map(10*main.getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255); // Setting  stroke color to do cool things
         main.strokeWeight(1);
 
         // main.noStroke();
 
-
-        main.directionalLight(main.getSmoothedAmplitude() * 10, 700, 206, 0, -1, 0);
+        // Set the light direction color based on the amplitude to shine on the top and bottom halves of the sphere
+        main.directionalLight(main.getSmoothedAmplitude() * 10, 700, 206, 0, -1, 0); 
         main.directionalLight(main.getSmoothedAmplitude() * 1500, 500, 126, 0, 1, 0);
 
 
@@ -57,61 +56,49 @@ public class SebsVisual extends Visual
         float spotlightY = main.height / 2 + 90 * PApplet.sin(randomAngleY);
 
     
-        //spotlights in the sphere
+        //spotlights in the sphere moving sporadically
         main.spotLight(130, 700, 500, spotlightX, spotlightY, 600, 0, 0, -1, MainVisual.PI/2, 600);
         main.spotLight(220, 700, 500, spotlightY, spotlightY, 600, 0, 0, -1, MainVisual.PI/2, 600);
 
 
         main.pushMatrix();
-        // //
-        main.camera(0, 0, 0, 0, 0, -1, 0, 1, 0);
+        
+        main.camera(0, 0, 0, 0, 0, -1, 0, 1, 0); // setting camera position
 
-        // main.translate(main.width/2, main.height/2, 0);
+
+        // rotating the sphere
         main.translate(0, 0, -200);
         main.rotateX(angle);
         main.rotateZ(angle);   
 
+        // setting the sphere size to move with the ampltide to add a bit more movement 
         float sphereSize = 20 + (150 * main.getSmoothedAmplitude()); 
         main.sphere(sphereSize);
 
         main.popMatrix();
         angle += 0.01f;
 
-        // main.calculateAverageAmplitude();
-        // main.stroke(MainVisual.map(main.getSmoothedAmplitude(), 0, 1, 0, 255), 255, 255);
-        // main.strokeWeight(5);
-        // main.noFill();
-        // main.lights();
-        // main.pushMatrix();
-        // //
-        // main.camera(0, 0, 0, 0, 0, -1, 0, 1, 0);
-        // main.translate(0, 0, -200);
-        // main.rotateX(angle);
-        // main.rotateZ(angle);       
-        // float boxSize = 50 + (200 * main.getSmoothedAmplitude()); 
-        // main.box(boxSize);   
-        // main.popMatrix();
-        // angle += 0.01f;
 
         int gridSize = 10;
+
+        // having a brackgournd grid with a smaller grid size so the spotlights can reflect off the grid 
         for (int x = gridSize; x <= main.width - gridSize; x += gridSize) {
             for (int y = gridSize; y <= main.height - gridSize; y += gridSize) {
                 main.noStroke();
                 main.fill(255);
                 main.rect(x-1, y-1, 3, 3);
-                main.stroke(255, 600* main.getSmoothedAmplitude()*0);
+                main.stroke(255, 0);
                 main.line(x, y, main.width/2, main.height/2);
             }
         }
 
         gridSize = 50;
+        // grid with larger gridsize with lines pointing to every corner
         for (int x = gridSize; x <= main.width - gridSize; x += gridSize) {
             for (int y = gridSize; y <= main.height - gridSize; y += gridSize) {
-                float c = Visual.map(main.getSmoothedAmplitude()*10*y, 0, main.getAudioBuffer().size(), 0, 255);
-                // main.stroke(3);
-                // main.fill(255);
-                main.stroke(c, 255, 4000*main.getSmoothedAmplitude());
-                main.rect(x-1, y-1, 1, 1);
+                float c = Visual.map(main.getSmoothedAmplitude()*10*y, 0, main.getAudioBuffer().size(), 0, 255); // color mapping
+                main.stroke(c, 4000*main.getSmoothedAmplitude(), 255); // setting stroke color
+                main.rect(x-1, y-1, 1, 1); 
                 main.line(x, y, main.width/2, main.height/2);
     
             }
