@@ -35,7 +35,7 @@ I am most proud of overcoming the trial and error stages when I only had a circl
 
 # Video
 
-[![YouTube](https://youtu.be/sg9C6jNJK3Y)
+[![YouTube](http://img.youtube.com/vi/sg9C6jNJK3Y/0.jpg)](https://youtu.be/sg9C6jNJK3Y)
 
 # Markdown Tutorial
 
