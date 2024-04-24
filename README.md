@@ -1,8 +1,8 @@
 # Music Visualiser Project
 
-Name:
+Name: Sebastian Manoli, Danelle Pillay
 
-Student Number: 
+Student Number: C22375341, C22348731
 
 ## Instructions
 - Fork this repository and use it a starter project for your assignment
@@ -12,6 +12,8 @@ Student Number:
 - Check out the WaveForm and AudioBandsVisual for examples of how to call the Processing functions from other classes that are not subclasses of PApplet
 
 # Description of the assignment
+## Sebastian
+For my visual I created geometric sphere where the edges increase and the detial of the sphere improves as the music plays. I also added directional lights to the sphere which gave it more life. I also created spotlights that move sporadically inside and around the sphere which I thought was really cool and added to the movement of the visual. For the background I made a grid and an iteration of lines pointing to every square in the grid covering the background of the screen. Finally I synced all the hues, colors and brightness' of all the different stroke edges in my visual to react differently with the amplitude of the music.
 
 # Instructions
 
