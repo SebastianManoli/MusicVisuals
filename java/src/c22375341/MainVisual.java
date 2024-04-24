@@ -16,7 +16,7 @@ public class MainVisual extends Visual {
 
     
     public void settings() {
-        size(700, 700, P3D);
+        size(900, 900, P3D);
     }
 
     public void setup() {
