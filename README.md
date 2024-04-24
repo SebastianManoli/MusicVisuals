@@ -33,6 +33,10 @@ I mainly used ```getSmoothedAmplitude()``` and ``` main.getAudioBuffer().size() 
 ## Sebastian
 I am most proud of overcoming the trial and error stages when I only had a circle in the middle of my screen. And I am really glad I could express myself creatively through code which I never really thought I could do up until now. And I am more than happy with my final visual and how far I have come since i started this project. 
 
+# Video
+
+[![YouTube](https://youtu.be/sg9C6jNJK3Y)
+
 # Markdown Tutorial
 
 This is *emphasis*
