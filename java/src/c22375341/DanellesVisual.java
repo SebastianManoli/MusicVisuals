@@ -83,7 +83,7 @@ public class DanellesVisual extends Visual
             main.rect(0+side3,i, 0-side3, i); 
 
             float side4 = lerpedBuffer[i] * halfHeight * 2.0f;
-            main.rect(main.width-side4,i, main.height + side4, i);
+            main.rect(main.width,i, main.height + side4, i);
         }
 
     }
